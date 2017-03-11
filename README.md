@@ -1,6 +1,8 @@
 # Starting WS
 ./mvnw spring-boot:run
 
+It is required to have the spark-lundstrom project in the same base directory. As of now, this webservice just calls a python code.
+
 # Troubleshooting on Mac OSX
 Update your JAVA_HOME env var to the latest version.
 
