@@ -11,12 +11,11 @@ import java.io.InputStreamReader;
 @RestController
 public class LundstromController {
 
-    private static final String template = "Hello, %s!";
     private final AtomicLong counter = new AtomicLong();
 
-    @RequestMapping("/lundstrom/input/{executors}/{cores}/{memory}/{datasize}/{application}")
-    public String lundstrom(@PathVariable int executors, @PathVariable String cores, @PathVariable String memory, @PathVariable String datasize, @PathVariable String application) throws java.io.IOException {
-    	Process p = Runtime.getRuntime().exec("python ../spark-lundstrom/run.py "+executors+" "+cores+" "+memory+" "+datasize+" "+application);
+    @RequestMapping("/lundstrom/input/{executors}/{cores}/{memory}/{datasize}/{application}/{platform}")
+    public String lundstrom(@PathVariable int executors, @PathVariable String cores, @PathVariable String memory, @PathVariable String datasize, @PathVariable String application, @PathVariable String platform) throws java.io.IOException {
+    	Process p = Runtime.getRuntime().exec("python ../spark-lundstrom/run.py "+executors+" "+cores+" "+memory+" "+datasize+" "+application+" "+platform);
     	BufferedReader in = new BufferedReader(new InputStreamReader(p.getInputStream()));
 		String ret = in.readLine() + "\n";
 		return ret;
